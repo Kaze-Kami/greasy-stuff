@@ -1,8 +1,8 @@
-function waitForElement(parent, selector, fn) {
+function waitForElement(parent, selector, once = true, fn) {
   const observer = new MutationObserver(() => {
     const element = parent.querySelector(selector)
     if (element) {
-      observer.disconnect()
+      if (once) observer.disconnect()
       fn(element)
     }
   })
